@@ -18,11 +18,29 @@ def two_sum(arr, size, x):
 
     return False
 
+# hashmap - dict solution
+def two_sum_dict(arr, size, x):
+    dict = {}
+    for i in range(0, size):
+        if x - arr[i] not in dict:
+            dict[arr[i]] = i
+            print(i, dict)
+        else:
+            return True
+    return False
+
 arr = [0, -1, 2, -3, 1]
 x = -2
 size = len(arr)
 
-if two_sum(arr, size, x):
+# Return boolean status
+if two_sum_dict(arr, size, x):
+    print("Yes")
+else:
+    print("No")
+
+# Return indices
+if two_sum_dict(arr, size, x):
     print("Yes")
 else:
     print("No")
