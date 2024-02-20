@@ -24,14 +24,37 @@ def two_sum_dict(arr, size, x):
     for i in range(0, size):
         if x - arr[i] not in dict:
             dict[arr[i]] = i
-            print(i, dict)
         else:
             return True
     return False
 
+# brute force solution
+def two_sum_indices(arr, size, x):
+    for i in range(0, size - 1):
+        for j in range(i + 1, size):
+            if arr[i] + arr[j] == x:
+                return (i,j)
+
+# hashmap - dict solution
+def two_sum_indices_dict(arr, size, x):
+    dict = {}
+    for i in range(0, size):
+        if x - arr[i] not in dict:
+            dict[arr[i]] = i
+        else:
+            return (dict[x - arr[i]], i)
+    return False
+
+
 arr = [0, -1, 2, -3, 1]
 x = -2
 size = len(arr)
+
+# Return boolean status
+if two_sum(arr, size, x):
+    print("Yes")
+else:
+    print("No")
 
 # Return boolean status
 if two_sum_dict(arr, size, x):
@@ -40,7 +63,5 @@ else:
     print("No")
 
 # Return indices
-if two_sum_dict(arr, size, x):
-    print("Yes")
-else:
-    print("No")
+print(two_sum_indices(arr, size, x))
+print(two_sum_indices_dict(arr, size, x))
